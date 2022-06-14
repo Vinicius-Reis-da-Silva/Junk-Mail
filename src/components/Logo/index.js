@@ -7,8 +7,11 @@ const Logo = ({ direction }) => {
     return (
         
         <View style={ [styles.container, direction? styles[`direction-${direction}`] : {} ] }>
-            <Image source={ require('../../assets/image/logo-reciclagem-eletronica.png') } style={ styles.imageLogo } />
-             <Text style={ styles.textLogo }>
+            <Image 
+                source={ require('../../assets/image/logo-reciclagem-eletronica.png') } 
+                style={[ styles.imageLogo, direction ? styles[`image-${direction}`] : {} ]} 
+            />
+            <Text style={ styles.textLogo }>
                 Junk Mail
             </Text>
         </View>

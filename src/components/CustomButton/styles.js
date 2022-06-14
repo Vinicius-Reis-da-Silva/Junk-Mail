@@ -5,16 +5,16 @@ const styles = StyleSheet.create({
     container: {
         alignItems: 'center',
         justifyContent: 'center',
-        width: 200,
         height: 40,
         backgroundColor: colors.primary,
         borderRadius: 10,
+        borderWidth: 1
     },
     
     text: {
         fontFamily: fonts.family,
         fontSize: fonts.regular,
-        fontWeight: '500',
+        fontWeight: 'bold',
         color: colors.white,
     },
 
