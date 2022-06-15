@@ -5,6 +5,8 @@ import { useForm } from 'react-hook-form';
 import styles from './styles';
 import ControlledInput from '../ControlledInput';
 import CustomButton from '../CustomButton';
+import ControlledRadio from '../ControlledRadio';
+import Radio from '../Radio';
 
 
 function onSignInPressed(data) {
@@ -14,6 +16,7 @@ function onSignInPressed(data) {
 const FormLogin = () => {
 
   const {control, handleSubmit, formState: {errors}} = useForm({});
+  const [selected, setSelected] = useState(0);
 
   return (
     <View style={ styles.container } > 
@@ -40,6 +43,13 @@ const FormLogin = () => {
             }}
         />
 
+        <ControlledRadio
+          name="useType"
+          control={control}
+          options={["Usuário", "Empresa"]}
+          horizontal={true}
+        />
+        
         <CustomButton type='medium' onPress={ handleSubmit(onSignInPressed) }>Entra</CustomButton>
     </View>
   );

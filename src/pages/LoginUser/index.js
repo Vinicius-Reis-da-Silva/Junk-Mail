@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import { View, Text, TouchableOpacity, Image} from 'react-native';
 import { AntDesign } from '@expo/vector-icons';
 
@@ -9,11 +9,13 @@ import { ScrollView } from 'react-native';
 
 export default function LoginUser() {
 
+  const [toggleCheckBox, setToggleCheckBox] = useState(false)
+
   return (
     <ScrollView showsVerticalScrollIndicator={false}>
       <View style={{flex: 1, }}>
         <Logo direction='column'/>
-        <FormLogin />
+        <FormLogin />       
 
         <TouchableOpacity style={ styles.buttonContainer }>
           <Text style={ styles.textButton }>Fazer login com o Google</Text>
@@ -23,7 +25,7 @@ export default function LoginUser() {
         <TouchableOpacity style={[styles.buttonContainer, styles['containerButton-registration']]}>
           <Text style={[ styles.textButton, styles['textButton-registration'] ]}>Não sou cadastrado.</Text>
         </TouchableOpacity>
-
+        
       </View>
     </ScrollView>
   );
