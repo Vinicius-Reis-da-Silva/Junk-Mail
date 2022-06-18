@@ -37,7 +37,6 @@ const styles = StyleSheet.create({
 
     'direction-column': {
         flexDirection: 'column',
-        marginTop: '20%'
     },
 
     'image-column': {

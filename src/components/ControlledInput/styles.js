@@ -41,7 +41,7 @@ export const styles = StyleSheet.create({
         width: 200
     },
 
-    'container-biger':{
+    'container-small':{
         width: 150
     },
 

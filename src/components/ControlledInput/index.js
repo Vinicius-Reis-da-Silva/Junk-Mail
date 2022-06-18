@@ -23,7 +23,7 @@ const ControlledInput = ({
         <>
           <View style={[
             styles.container,
-            type ? styles[`${type}`] : {},
+            type ? styles[`container-${type}`] : {},
             {borderColor: error ? 'red' : "#717171"},
           ]}>
             <TextInput 

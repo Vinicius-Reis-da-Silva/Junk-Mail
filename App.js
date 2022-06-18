@@ -2,15 +2,14 @@ import { StatusBar } from 'expo-status-bar';
 import React, { useState } from 'react';
 import { StyleSheet, Text, View, Image } from 'react-native';
 
-import LoginUser from './src/pages/LoginUser';
-import Radio from './src/components/Radio';
+import UserRegistration from './src/pages/UserRegistration';
 
 export default function App() {
 
   return (
     <View >
       <StatusBar backgroundColor='black' style='light'  />
-      <LoginUser />    
+      <UserRegistration />    
     </View>
   );
 }
