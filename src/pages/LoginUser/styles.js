@@ -18,7 +18,6 @@ const styles = StyleSheet.create({
 
         backgroundColor: 'transparent',
         borderColor: colors.primary,
-        borderWidth: 2,
         borderRadius: 10,
     },
     

@@ -22,7 +22,7 @@ const Radio = ({
                     <View style={ styles.outlineCircle }>
                         { selected === itemOption && <View style={ styles.innerCircle } />}
                     </View>
-                    <Text style={[ styles.textLabel, {color: (selected === index) ? '#000000' : '#717171'} ]} >
+                    <Text style={[ styles.textLabel, {color: selected === itemOption ? '#000000' : '#717171'} ]} >
                         {itemOption}
                     </Text>
                 </TouchableOpacity>

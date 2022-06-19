@@ -6,6 +6,7 @@ import styles from './styles';
 import Logo from '../../components/Logo';
 import FormLogin from '../../components/FormLogin';
 import { ScrollView } from 'react-native';
+import ButtonGoogle from '../../components/ButtonGoogle';
 
 export default function LoginUser() {
 
@@ -17,10 +18,7 @@ export default function LoginUser() {
         <Logo direction='column'/>
         <FormLogin />       
 
-        <TouchableOpacity style={ styles.buttonContainer }>
-          <Text style={ styles.textButton }>Fazer login com o Google</Text>
-          <AntDesign name="google" size={24} color="black" style={{ paddingHorizontal: 5}}/>
-        </TouchableOpacity>
+        <ButtonGoogle />
 
         <TouchableOpacity style={[styles.buttonContainer, styles['containerButton-registration']]}>
           <Text style={[ styles.textButton, styles['textButton-registration'] ]}>Não sou cadastrado.</Text>
