@@ -3,13 +3,15 @@ import React, { useState } from 'react';
 import { StyleSheet, Text, View, Image } from 'react-native';
 
 import LoginUser from './src/pages/LoginUser';
+import UserRegistration from './src/pages/UserRegistration';
+import CompanyRegistration from './src/pages/CompanyRegistration';
 
 export default function App() {
 
   return (
     <View >
       <StatusBar backgroundColor='black' style='light'  />
-      <LoginUser />   
+      <CompanyRegistration />
     </View>
   );
 }

@@ -4,12 +4,12 @@ import { fonts, colors } from "../../styles";
 
 const styles = StyleSheet.create({
     container: {
-        paddingVertical: 20,
+        paddingVertical: 5,
         paddingHorizontal: 10,
     },
 
     containerForm: {
-        paddingHorizontal: 20
+        paddingHorizontal: 20,
     },
 
     title: {
@@ -18,7 +18,7 @@ const styles = StyleSheet.create({
         fontWeight: 'bold',
         color: colors.primary,
         textAlign: 'center',
-        marginVertical: 22,
+        marginBottom: 22,
     },
 
     containerButtonCadastrar: {
@@ -28,7 +28,8 @@ const styles = StyleSheet.create({
         backgroundColor: colors.primary,
         borderRadius: 10,
         borderWidth: 0.5,
-        marginHorizontal: 75
+        marginHorizontal: 75,
+        marginVertical: 22,
     },
 
     textButtonCadastrar: {

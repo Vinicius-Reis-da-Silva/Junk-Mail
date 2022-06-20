@@ -9,7 +9,7 @@ import ControlledRadio from '../ControlledRadio';
 
 
 function onSignInPressed(data) {
-  console.log(data, data._getWatch('useType'));
+  console.log(data);
 }
 
 const FormLogin = () => {
@@ -48,9 +48,16 @@ const FormLogin = () => {
           control={control}
           options={["Usuário", "Empresa"]}
           horizontal={true}
+          changeSelectData={ (item) => console.log(`Meu seleção ${item}.`) }
         />
 
-        <CustomButton type='mediumPrimary' onPress={ handleSubmit(onSignInPressed) }>Entra</CustomButton>
+        <CustomButton 
+          type='mediumPrimary' 
+          styleContainer={ styles.buttonContainer } 
+          onPress={ handleSubmit(onSignInPressed) }
+        >
+          Entra
+        </CustomButton>
     </View>
   );
 }

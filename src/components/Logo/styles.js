@@ -3,10 +3,10 @@ import { fonts, colors } from "../../styles";
 
 const styles = StyleSheet.create({
     container: {
-        flexDirection: 'row',
+        flexDirection: 'column',
         backgroundColor: 'transparent',
-        width: '100%',
-        alignItems: 'center',
+        width: 170,
+        height: 170,
     },
 
     imageLogo: {
@@ -27,6 +27,7 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         paddingTop: 30,
         paddingVertical: 10,
+        width: '100%',
     },
 
     'image-row': {
@@ -37,12 +38,17 @@ const styles = StyleSheet.create({
 
     'direction-column': {
         flexDirection: 'column',
+        alignItems: 'center',
+        justifyContent: 'center',
+        alignSelf: 'center',
     },
 
-    'image-column': {
-        width: 170,
-        height: 170,
+    'image-column': { 
         resizeMode: 'stretch',
+        height: 100,
+        width: 100,
+        alignItems: 'center',
+        justifyContent: 'center',
     }
 });
 

@@ -9,7 +9,7 @@ const styles = StyleSheet.create({
         borderWidth: 0.5,
         marginHorizontal: 10, 
         width: 140, 
-        height: 40
+        height: 40,
     },
 
     textSelect: {

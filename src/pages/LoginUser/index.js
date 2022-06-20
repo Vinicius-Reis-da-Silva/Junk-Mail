@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import { View, Text, TouchableOpacity, Image} from 'react-native';
+import { View, Text, TouchableOpacity, Image, KeyboardAvoidingView} from 'react-native';
 import { AntDesign } from '@expo/vector-icons';
 
 import styles from './styles';
@@ -13,18 +13,20 @@ export default function LoginUser() {
   const [toggleCheckBox, setToggleCheckBox] = useState(false)
 
   return (
-    <ScrollView showsVerticalScrollIndicator={false}>
-      <View style={{flex: 1, }}>
-        <Logo direction='column'/>
-        <FormLogin />       
+    <KeyboardAvoidingView behavior={Platform.OS === 'ios' ? 'padding' : null}>
+      <ScrollView showsVerticalScrollIndicator={false}>
+        <View style={{flex: 1, }}>
+          <Logo direction='column'/>
 
-        <ButtonGoogle />
+          <FormLogin />       
 
-        <TouchableOpacity style={[styles.buttonContainer, styles['containerButton-registration']]}>
-          <Text style={[ styles.textButton, styles['textButton-registration'] ]}>Não sou cadastrado.</Text>
-        </TouchableOpacity>
-        
-      </View>
-    </ScrollView>
+          <ButtonGoogle />
+
+          <TouchableOpacity style={[styles.buttonContainer, styles['containerButton-registration']]}>
+            <Text style={[ styles.textButton, styles['textButton-registration'] ]}>Não sou cadastrado.</Text>
+          </TouchableOpacity>
+        </View>
+      </ScrollView>
+    </KeyboardAvoidingView>
   );
 }

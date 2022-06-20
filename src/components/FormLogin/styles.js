@@ -9,14 +9,17 @@ const styles = StyleSheet.create({
     },
 
     title: {
-        marginTop: 50,
+        marginTop: 120,
         fontFamily: fonts.family,
         fontSize: fonts.big,
         fontWeight: 'bold',
         color: colors.primary,
+    },
+
+    buttonContainer: {
+        marginVertical: 10,
+        marginBottom: -10
     }
-
-
 });
 
 export default styles;

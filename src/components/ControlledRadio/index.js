@@ -9,6 +9,7 @@ const ControlledRadio = ({
     rules = {},
     options = [],
     horizontal = false,
+    changeSelectData = () => {},
 }) => {
 
     return(
@@ -21,12 +22,15 @@ const ControlledRadio = ({
                     selected={ value } 
                     optionsLabel={ options }
                     horizontal={ horizontal }
-                    onChangeSelect={ value => onChange(value) }
+                    onChangeSelect={ (value) => { 
+                        onChange(value)
+                        changeSelectData(value)
+                    }}
                 />
             ) }
+
         />
     );
 }
 
 export default ControlledRadio;
-

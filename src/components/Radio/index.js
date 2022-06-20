@@ -15,7 +15,9 @@ const Radio = ({
             {
             optionsLabel.map( (itemOption, index) => (
                 <TouchableOpacity 
-                    onPress={ () => onChangeSelect(itemOption, index) } 
+                    onPress={ () => { 
+                        onChangeSelect(itemOption, index) 
+                    } } 
                     style={[ styles.radioContainer, {marginLeft: horizontal? 10 : 0, marginTop: horizontal? 0 : 10} ]}
                     key={itemOption}
                 > 

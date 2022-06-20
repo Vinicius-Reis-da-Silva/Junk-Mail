@@ -4,8 +4,9 @@ import { useForm } from 'react-hook-form';
 
 import ControlledInput from '../../components/ControlledInput';
 import Logo from '../../components/Logo'
-import styles from './styles';
 import ControlledSelect from '../../components/ControlledSelect';
+import ButtonGoogle from '../../components/ButtonGoogle';
+import styles from './styles';
 
 function onRegistrationPressed(data){
   console.log(data)
@@ -84,11 +85,7 @@ export default function UserRegistration() {
         </Text>
       </TouchableOpacity>
 
-      <TouchableOpacity style={ styles.containerButtonCadastrar }>
-        <Text style={ styles.textButtonCadastrar }>
-          Fazer login com o Google
-        </Text>
-      </TouchableOpacity>
+      <ButtonGoogle />
     </ScrollView>
   );
 }

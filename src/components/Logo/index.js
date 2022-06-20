@@ -11,7 +11,7 @@ const Logo = ({ direction }) => {
                 source={ require('../../assets/image/logo-reciclagem-eletronica.png') } 
                 style={[ styles.imageLogo, direction ? styles[`image-${direction}`] : {} ]} 
             />
-            <Text style={ styles.textLogo }>
+            <Text style={[ styles.textLogo, { paddingVertical: -10 } ]}>
                 Junk Mail
             </Text>
         </View>
