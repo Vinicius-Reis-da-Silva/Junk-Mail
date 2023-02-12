@@ -9,3 +9,13 @@ datasource db {
   provider = "sqlite"
   url      = env("DATABASE_URL")
 }
+
+model DiscardPoint {
+  id            String  @id @default(uuid())
+  owner         String
+  discardObject String
+  latitude      Decimal
+  longitude     Decimal
+
+  @@map("discardPoint")
+}
