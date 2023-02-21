@@ -11,11 +11,40 @@ datasource db {
 }
 
 model DiscardPoint {
-  id            String  @id @default(uuid())
-  owner         String
-  discardObject String
-  latitude      Decimal
-  longitude     Decimal
+  id                String   @id @default(uuid())
+  createdAt         DateTime @default(now())
+  discardObject     String
+  address           String
+  city              String
+  localization_lat  Decimal
+  localization_long Decimal
 
-  @@map("discardPoint")
+  User         User?        @relation(fields: [userId], references: [id])
+  userId       String?
+  Localization Localization @relation(fields: [localization_lat, localization_long], references: [latitude, longitude])
+
+  @@unique([localization_lat, localization_long], name: "full_localization")
+  @@map("discard_points")
+}
+
+model Localization {
+  latitude     Decimal
+  longitude    Decimal
+  discardPoint DiscardPoint?
+
+  @@id([latitude, longitude])
+}
+
+model User {
+  id        String   @id @default(uuid())
+  name      String
+  email     String   @unique
+  googleId  String?  @unique
+  avatarUrl String?
+  createdAt DateTime @default(now())
+
+  isCompany        Boolean        @default(false)
+  collectionPoints DiscardPoint[]
+
+  @@map("user")
 }
