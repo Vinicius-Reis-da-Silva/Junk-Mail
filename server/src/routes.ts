@@ -24,20 +24,20 @@ export async function appRoutes(app: FastifyInstance) {
   });
 
   app.post('/users', async (request) => {
-    const createUserBody = z.object({
-      acess_token: z.string(),
-    })
+    // const createUserBody = z.object({
+    //   acess_token: z.string(),
+    // })
   
-    const { acess_token } = createUserBody.parse(request.body)
+    // const { acess_token } = createUserBody.parse(request.body)
   
-    const userResponse = await fetch('https://www.googleapis.com/oauth2/v2/userinfo', {
-      method: 'GET',
-      headers: {
-        Authorization: `Bearer ${acess_token}`,
-      }
-    })
+    // const userResponse = await fetch('https://www.googleapis.com/oauth2/v2/userinfo', {
+    //   method: 'GET',
+    //   headers: {
+    //     Authorization: `Bearer ${acess_token}`,
+    //   }
+    // })
 
-    const userData = await userResponse.json()
+    // const userData = await userResponse.json()
 
     const userInfoSchema = z.object({
       id: z.string(),
@@ -46,7 +46,7 @@ export async function appRoutes(app: FastifyInstance) {
       picture: z.string().url(),
     })
 
-    const userInfo = userInfoSchema.parse(userData)
+    const userInfo = userInfoSchema.parse(request.body)
 
     let user = await prisma.user.findUnique({
       where: {
@@ -65,51 +65,57 @@ export async function appRoutes(app: FastifyInstance) {
       })
     }
 
-    const token =  app.jwt.sign({
-      name: user.name,
-      avatarUrl: user.avatarUrl,
-    }, {
-      sub: user.id,
-      expiresIn: '7 days'
-    })
+    // const token =  app.jwt.sign({
+    //   name: user.name,
+    //   avatarUrl: user.avatarUrl,
+    // }, {
+    //   sub: user.id,
+    //   expiresIn: '7 days'
+    // })
 
-    return { token }
+    // return { token }
   })  
 
   app.post('/create-point', async (request, reply) => {
+    // Data Validation
     const createPointBody = z.object({
+      userId: z.string().uuid(),
       discardObject: z.string(),
+      street: z.string(),
+      city: z.string(),
       latitude: z.number(),
       longitude: z.number(),
-      address: z.string(),
-      city: z.string(),
-      userId: z.string().uuid(),
     })
 
     const pointInfo = createPointBody.parse(request.body);
 
+    // Data Verification
     let point = await prisma.discardPoint.findUnique({
       where: {
-        full_localization: {
-          localization_lat: pointInfo.latitude,
-          localization_long: pointInfo.longitude,
+        coord_latitude_coord_longitude: {
+          coord_latitude: pointInfo.latitude,
+          coord_longitude: pointInfo.longitude,
         }
       }
     })
 
+    // create new point
     if (!point) {
       point = await prisma.discardPoint.create({
         data: {
           userId: pointInfo.userId,
-          discardObject: pointInfo.discardObject,
-          address: pointInfo.address,
-          city: pointInfo.city,
-          localization_lat: pointInfo.latitude,
-          localization_long: pointInfo.longitude,
+          discard_object: pointInfo.discardObject,
+          address_city: pointInfo.city,
+          address_street: pointInfo.street,
+          coord_latitude: pointInfo.latitude,
+          coord_longitude: pointInfo.longitude
         }
       })
+    } else {
+      return reply.code(200).send('ERROR: Ponto já existente!');
     }
 
+    
   })
 }
 

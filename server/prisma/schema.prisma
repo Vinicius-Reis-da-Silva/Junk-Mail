@@ -10,31 +10,6 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model DiscardPoint {
-  id                String   @id @default(uuid())
-  createdAt         DateTime @default(now())
-  discardObject     String
-  address           String
-  city              String
-  localization_lat  Decimal
-  localization_long Decimal
-
-  User         User?        @relation(fields: [userId], references: [id])
-  userId       String?
-  Localization Localization @relation(fields: [localization_lat, localization_long], references: [latitude, longitude])
-
-  @@unique([localization_lat, localization_long], name: "full_localization")
-  @@map("discard_points")
-}
-
-model Localization {
-  latitude     Decimal
-  longitude    Decimal
-  discardPoint DiscardPoint?
-
-  @@id([latitude, longitude])
-}
-
 model User {
   id        String   @id @default(uuid())
   name      String
@@ -47,4 +22,20 @@ model User {
   collectionPoints DiscardPoint[]
 
   @@map("user")
+}
+
+model DiscardPoint {
+  id              String   @id @default(uuid())
+  createdAt       DateTime @default(now())
+  discard_object  String
+  address_street  String
+  address_city    String
+  coord_latitude  Float
+  coord_longitude Float
+
+  userId String?
+  user   User?   @relation(fields: [userId], references: [id])
+
+  @@unique([coord_latitude, coord_longitude])
+  @@map("discard_points")
 }
