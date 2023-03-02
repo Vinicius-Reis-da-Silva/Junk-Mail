@@ -1,14 +1,28 @@
 import Fastify from "fastify";
 import cors from "@fastify/cors";
+import jwt from "@fastify/jwt";
+
 import { appRoutes } from "./routes";
+import { authRoutes } from "./routes/auth";
 
-const app = Fastify();
+async function bootstrap() {
+  const app = Fastify();
+  
+  await app.register(cors);
 
-app.register(cors);
-app.register(appRoutes)
+  await app.register(jwt, {
+    secret: 'junkmail',
+  });
 
-app.listen({
-  port: 3333,
-}).then(() => {
-  console.log('HTTP Server running...');
-})
+  await app.register(appRoutes);
+  await app.register(authRoutes);
+  
+  app.listen({
+    port: 3333,
+    host: '0.0.0.0'
+  }).then(() => {
+    console.log('HTTP Server running...');
+  });
+}
+
+bootstrap();
