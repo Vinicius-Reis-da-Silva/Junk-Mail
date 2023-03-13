@@ -1,7 +1,6 @@
 import { View, Text } from "react-native";
 
-import { ButtonSignIn } from "../components/ButtonSignIn";
-import { Header } from "../components/Header";
+import { Button } from "../components/Button";
 import { useAuth } from "../hooks/useAuth";
 
 export function Home() {
@@ -9,10 +8,9 @@ export function Home() {
   const { user } = useAuth();
 
   return (
-    <View className="flex-1 items-center">
-      <Header />
+    <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
       <Text>Home Screen</Text>
-      <ButtonSignIn 
+      <Button 
         className="flex flex-col mt-1 items-center p-2 border-2 border-green-700 rounded-lg"
         title="Log Data"
         icon="database"
